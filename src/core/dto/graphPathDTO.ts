@@ -6,4 +6,5 @@ export interface GraphPathProps {
   pathRef: React.RefObject<Path>,
   points: SharedValue<PointData[]>,
   type: 'line' | 'curve',
+  maskId: string,
 }

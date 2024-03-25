@@ -4,6 +4,7 @@ import { SharedValue } from 'react-native-reanimated';
 
 export interface ReanimatedGraphProps {
   // props
+  maskId: string,
   xAxis?: number[],
   yAxis?: number[],
   color?: string,

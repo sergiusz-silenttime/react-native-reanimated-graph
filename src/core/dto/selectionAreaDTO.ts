@@ -3,6 +3,7 @@ import { Path } from 'react-native-svg';
 import { DataProps, PointData, ReanimatedGraphProps } from './graphDTO';
 
 export interface SelectionAreaProps {
+  maskId: string,
   width: SharedValue<number>,
   height: number,
   x: SharedValue<number>,

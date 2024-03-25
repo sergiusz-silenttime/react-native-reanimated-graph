@@ -14,7 +14,7 @@ import {
 import GraphStyles from './Graph.styles';
 import { useGesture } from '../../core/hooks';
 import {
-  ANIMATION_DURATION, AXIS_LEGEND_QUANTITY, CHART_OFFSET, DEFAULT_HEIGHT, MAX_POINTS, WAIT,
+  ANIMATION_DURATION, AXIS_LEGEND_QUANTITY, CHART_OFFSET, DEFAULT_HEIGHT, MASK_ID, MAX_POINTS, WAIT,
 } from '../../core/constants/data';
 import GraphWrapper from './graphWrapper';
 import GraphPath from '../GraphPath';
@@ -27,6 +27,7 @@ import Legend from '../Legend';
 import Extremes from '../Extremes';
 
 const ReanimatedGraph = forwardRef<ReanimatedGraphPublicMethods, ReanimatedGraphProps>( ( {
+  maskId = MASK_ID,
   xAxis = [ 0, 1 ],
   yAxis = [ 0, 0 ],
   color = '#FFFFFF',
@@ -192,8 +193,9 @@ const ReanimatedGraph = forwardRef<ReanimatedGraphPublicMethods, ReanimatedGraph
 
   const Graph = useMemo( () => (
     <GraphWrapper width={width} height={height} onLayout={onLayout} style={graphStyle}>
-      <GraphPath pathRef={pathRef} points={points} type={type} />
+      <GraphPath pathRef={pathRef} points={points} type={type} maskId={maskId} />
       <SelectionArea
+        maskId={maskId}
         width={graphWidth}
         height={height}
         x={x}

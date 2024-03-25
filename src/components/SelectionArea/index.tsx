@@ -5,10 +5,10 @@ import {
 import { SelectionAreaProps } from '../../core/dto/selectionAreaDTO';
 import { AnimatedCircle, AnimatedPath, AnimatedRect } from '../Animated';
 import { findPointOnPath } from '../../core/helpers';
-import { MASK_ID } from '../../core/constants/data';
 import { findNumbersAround } from '../../core/helpers/worklets';
 
 const SelectionArea: FC<SelectionAreaProps> = ( {
+  maskId,
   width,
   height,
   x,
@@ -110,14 +110,14 @@ const SelectionArea: FC<SelectionAreaProps> = ( {
 
   if ( !gestureEnabled ) {
 
-    return <AnimatedRect mask={`url(#${MASK_ID})`} fill={color} x="0" y="0" width="100%" height="100%" />;
+    return <AnimatedRect mask={`url(#${maskId})`} fill={color} x="0" y="0" width="100%" height="100%" />;
 
   }
 
   return (
     <>
-      <AnimatedRect mask={`url(#${MASK_ID})`} testID="graphPath" fill={color} x="0" y="0" width="100%" height="100%" fillOpacity={0.5} />
-      <AnimatedRect mask={`url(#${MASK_ID})`} animatedProps={selectionAreaProps} fill={color} y="0" height="100%" testID="selectionArea" />
+      <AnimatedRect mask={`url(#${maskId})`} testID="graphPath" fill={color} x="0" y="0" width="100%" height="100%" fillOpacity={0.5} />
+      <AnimatedRect mask={`url(#${maskId})`} animatedProps={selectionAreaProps} fill={color} y="0" height="100%" testID="selectionArea" />
       {showHorizontal && <AnimatedPath animatedProps={selectionHorizontal} stroke={selectionLineColor} strokeDasharray="4,4" />}
       {showVertical && <AnimatedPath animatedProps={selectionVertical} stroke={selectionLineColor} strokeDasharray="4,4" />}
       {showSelectionDot && (
